@@ -3,7 +3,7 @@ session_start();
 if(!isset($_SESSION['username'])){
     header("Location: /index.php");
 }
-if($_SESSION['rank'] < 9){
+if($_SESSION['rank'] < 7){
        header("Location: /ocpanel/beheer.php?permis");
 }
  echo'    <!-- Bootstrap Core CSS -->
@@ -83,6 +83,10 @@ if($_SESSION['rank'] < 9){
     echo'</td><td>';
     echo $result->surname;
     echo'</td><td>';
+    echo'<form action="/ocpanel/b-bewerken.php?bewerkcentralist" method="post">';
+    echo'<input type="hidden" name="id" value="';
+    echo $result->id;
+    echo'">';
     echo'    <input type="submit" value="Bewerk" class="btn btn-small btn-success">';    echo'</td><td>';
     echo'</tr>';
     echo'</table>';

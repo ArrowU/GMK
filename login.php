@@ -72,7 +72,7 @@ if(isset($_SESSION['username'])){
 </div> 
 <div class="input-group">
   <span class="input-group-addon" id="basic-addon1">#</span>
-  <input type="text" name="password" class="form-control" placeholder="Wachtwoord" aria-describedby="basic-addon1">
+  <input type="password" name="password" class="form-control" placeholder="Wachtwoord" aria-describedby="basic-addon1">
 </div> <br>
     <center><input type="submit" value="Log In!" class="btn btn-default"></center>
     
