@@ -122,7 +122,7 @@ function activeunits(){
     
 function meldingen(){
     $("#meldingen").load("/inc/scripts/survhandeling.php?meldingen");
-    setTimeout(meldingen, 5000);
+    setTimeout(meldingen, 500);
 }
 
 
