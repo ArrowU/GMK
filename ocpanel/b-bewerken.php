@@ -31,8 +31,8 @@ if($_SESSION['rank'] < 8){
 
 <?php
 require($_SERVER['DOCUMENT_ROOT'].'/inc/sql.php');
-if(isset($_GET['bewerkcentralist'])){
-    $id = $_POST['id'];
+if(isset($_GET['cid']) || is_numeric($_GET['cid'])){
+    $id = $_GET['cid'];
     $query = $pdo->prepare("SELECT * FROM users WHERE id=:id");
     $query->execute(array('id' => $id));
     while($result = $query->fetch(PDO::FETCH_OBJ)){

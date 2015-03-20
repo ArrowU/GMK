@@ -62,7 +62,7 @@ if($_SESSION['rank'] < 7){
                 <form action="?zoekcentralist" method="post">
                 <input type="text" placeholder="Zoekterm" name="naam">
                     
-                </form>
+                </form></div>
                               
                        <table class="table table-condensed">
                            <tr>
@@ -73,7 +73,7 @@ if($_SESSION['rank'] < 7){
                 <?php if(isset($_GET['zoekcentralist'])){
     require($_SERVER['DOCUMENT_ROOT'].'/inc/sql.php');
     $term = "%".$_POST['naam']."%";
-    $query = $pdo->prepare("SELECT * FROM users WHERE name LIKE ?");
+    $query = $pdo->prepare("SELECT * FROM users WHERE name LIKE ? ORDER BY id");
     $query->execute(array($term));
     while($result = $query->fetch(PDO::FETCH_OBJ)){
     echo'<table class="table table-condensed">';
@@ -83,11 +83,8 @@ if($_SESSION['rank'] < 7){
     echo'</td><td>';
     echo $result->surname;
     echo'</td><td>';
-    echo'<form action="/ocpanel/b-bewerken.php?bewerkcentralist" method="post">';
-    echo'<input type="hidden" name="id" value="';
-    echo $result->id;
-    echo'">';
-    echo'    <input type="submit" value="Bewerk" class="btn btn-small btn-success">';    echo'</td><td>';
+    echo'<a href="/ocpanel/b-bewerken.php?cid='.$result->id.'"><button class="btn btn-small btn-success">Bewerk</button> </a>';
+    echo'</td><td>';
     echo'</tr>';
     echo'</table>';
 

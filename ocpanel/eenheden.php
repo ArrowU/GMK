@@ -18,3 +18,6 @@ if(!isset($_SESSION['username'])){
   <li role="presentation" class="active"><a href="eenheden.php">Eenheden</a></li>
      <li role="presentation"><a href="/index.php?logout"><strong>Uitloggen</strong></a></li>
 </ul>
+
+
+
