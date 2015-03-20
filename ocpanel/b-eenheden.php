@@ -49,9 +49,9 @@ if($_SESSION['rank'] < 4){
 
                         ?>
                     </select>
-                    <input type="number" name="volgnummer" placeholder="Volgnummer">
-                    <input type="text" name="naam" placeholder="Voornaam">
-                    <input type="text" name="achternaam" placeholder="Achternaam">
+                    <input type="number" required name="volgnummer" placeholder="Volgnummer">
+                    <input type="text" required name="naam" placeholder="Voornaam">
+                    <input type="text" required name="achternaam" placeholder="Achternaam">
                     Eenheid: <select name="eenheid">
                         <?php
                         $query = $pdo->prepare("SELECT * FROM units ORDER BY id");

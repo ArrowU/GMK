@@ -116,13 +116,13 @@ $(document).ready(function(){
 
 function activeunits(){
     $("#activeunits").load("/inc/scripts/survhandeling.php?ACTIVEUNITS");
-    setTimeout(activeunits, 10000);
+    setTimeout(activeunits, 5000);
 }
 
     
 function meldingen(){
     $("#meldingen").load("/inc/scripts/survhandeling.php?meldingen");
-    setTimeout(meldingen, 500);
+    setTimeout(meldingen, 1000);
 }
 
 
