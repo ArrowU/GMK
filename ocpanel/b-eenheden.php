@@ -29,3 +29,46 @@ if($_SESSION['rank'] < 4){
 </ul>
 
 
+<div class="row">
+    <div class="col-xs-3 col-md-4">
+        <div class="thumbnail">
+            <center>
+                <h5>Eenheid toevoegen:</h5>
+                <form action="/inc/scripts/beheerhandeling.php?addunit" method="post">
+                    Roepnummer: <select name="roepnummer">
+                        <?php
+                        require($_SERVER['DOCUMENT_ROOT'].'/inc/sql.php');
+                        $query = $pdo->prepare("SELECT * FROM roepnummers ORDER BY roepnummer");
+                        $query->execute();
+                        while($result = $query->fetch(PDO::FETCH_OBJ)){
+
+                            echo'<option value="'.$result->roepnummer.'">';
+                            echo $result->roepnummer;
+                            echo'</option>';
+                        }
+
+                        ?>
+                    </select>
+                    <input type="number" name="volgnummer" placeholder="Volgnummer">
+                    <input type="text" name="naam" placeholder="Voornaam">
+                    <input type="text" name="achternaam" placeholder="Achternaam">
+                    Eenheid: <select name="eenheid">
+                        <?php
+                        $query = $pdo->prepare("SELECT * FROM units ORDER BY id");
+                        $query->execute();
+                        while($result = $query->fetch(PDO::FETCH_OBJ)){
+
+                            echo'<option value="'.$result->eenheid.'">';
+                            echo $result->eenheid;
+                            echo'</option>';
+                        }
+
+                        ?>
+                    </select>
+                   <input type="submit" value="toevoegen" class="btn btn-success">
+                </form>
+
+            </center>
+        </div>
+    </div>
+</div>

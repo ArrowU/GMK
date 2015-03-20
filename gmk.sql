@@ -1,22 +1,24 @@
 /*
-Navicat MySQL Data Transfer
+ Navicat Premium Data Transfer
 
-Source Server         : asd
-Source Server Version : 50621
-Source Host           : localhost:3306
-Source Database       : gmk
+ Source Server         : asd
+ Source Server Type    : MySQL
+ Source Server Version : 50621
+ Source Host           : localhost
+ Source Database       : gmk
 
-Target Server Type    : MYSQL
-Target Server Version : 50621
-File Encoding         : 65001
+ Target Server Type    : MySQL
+ Target Server Version : 50621
+ File Encoding         : utf-8
 
-Date: 2015-03-20 14:56:41
+ Date: 03/20/2015 21:38:19 PM
 */
 
-SET FOREIGN_KEY_CHECKS=0;
+SET NAMES utf8;
+SET FOREIGN_KEY_CHECKS = 0;
 
 -- ----------------------------
--- Table structure for actieve_eenheden
+--  Table structure for `actieve_eenheden`
 -- ----------------------------
 DROP TABLE IF EXISTS `actieve_eenheden`;
 CREATE TABLE `actieve_eenheden` (
@@ -29,14 +31,10 @@ CREATE TABLE `actieve_eenheden` (
   `melding_id` text,
   `grip` text,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=58 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=68 DEFAULT CHARSET=latin1;
 
 -- ----------------------------
--- Records of actieve_eenheden
--- ----------------------------
-
--- ----------------------------
--- Table structure for eenheden
+--  Table structure for `eenheden`
 -- ----------------------------
 DROP TABLE IF EXISTS `eenheden`;
 CREATE TABLE `eenheden` (
@@ -46,19 +44,12 @@ CREATE TABLE `eenheden` (
   `volgnummer` int(255) DEFAULT NULL,
   `specialisatie` text,
   `aangemeld` text,
+  `eenheid` text,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=latin1;
 
 -- ----------------------------
--- Records of eenheden
--- ----------------------------
-INSERT INTO `eenheden` VALUES ('1', 'Piet', '40', '10', '1', '0');
-INSERT INTO `eenheden` VALUES ('2', 'Jan', '22', '14', '0', '0');
-INSERT INTO `eenheden` VALUES ('3', 'Henk', '80', '12', '1', '0');
-INSERT INTO `eenheden` VALUES ('4', 'Putin', '80', '11', '0', '0');
-
--- ----------------------------
--- Table structure for meldingen
+--  Table structure for `meldingen`
 -- ----------------------------
 DROP TABLE IF EXISTS `meldingen`;
 CREATE TABLE `meldingen` (
@@ -67,14 +58,10 @@ CREATE TABLE `meldingen` (
   `melding` text,
   `afgerond` enum('0','1') DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=latin1;
 
 -- ----------------------------
--- Records of meldingen
--- ----------------------------
-
--- ----------------------------
--- Table structure for requests
+--  Table structure for `requests`
 -- ----------------------------
 DROP TABLE IF EXISTS `requests`;
 CREATE TABLE `requests` (
@@ -82,25 +69,24 @@ CREATE TABLE `requests` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- ----------------------------
--- Records of requests
--- ----------------------------
-
--- ----------------------------
--- Table structure for roepnummers
+--  Table structure for `roepnummers`
 -- ----------------------------
 DROP TABLE IF EXISTS `roepnummers`;
 CREATE TABLE `roepnummers` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `roepnummer` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
 
 -- ----------------------------
--- Records of roepnummers
+--  Records of `roepnummers`
 -- ----------------------------
+BEGIN;
+INSERT INTO `roepnummers` VALUES ('1', '10'), ('2', '22');
+COMMIT;
 
 -- ----------------------------
--- Table structure for specialisaties
+--  Table structure for `specialisaties`
 -- ----------------------------
 DROP TABLE IF EXISTS `specialisaties`;
 CREATE TABLE `specialisaties` (
@@ -111,14 +97,31 @@ CREATE TABLE `specialisaties` (
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
 
 -- ----------------------------
--- Records of specialisaties
+--  Records of `specialisaties`
 -- ----------------------------
-INSERT INTO `specialisaties` VALUES ('1', 'Geen', '-');
-INSERT INTO `specialisaties` VALUES ('2', 'Vrijwillige Brandweer', 'VB');
-INSERT INTO `specialisaties` VALUES ('3', 'Vrijwillige Ambulance', 'VA');
+BEGIN;
+INSERT INTO `specialisaties` VALUES ('1', 'Geen', '-'), ('2', 'Vrijwillige Brandweer', 'VB'), ('3', 'Vrijwillige Ambulance', 'VA');
+COMMIT;
 
 -- ----------------------------
--- Table structure for users
+--  Table structure for `units`
+-- ----------------------------
+DROP TABLE IF EXISTS `units`;
+CREATE TABLE `units` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `eenheid` text,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
+
+-- ----------------------------
+--  Records of `units`
+-- ----------------------------
+BEGIN;
+INSERT INTO `units` VALUES ('1', 'Politie'), ('2', 'Ambulance'), ('3', 'Brandweer');
+COMMIT;
+
+-- ----------------------------
+--  Table structure for `users`
 -- ----------------------------
 DROP TABLE IF EXISTS `users`;
 CREATE TABLE `users` (
@@ -129,10 +132,13 @@ CREATE TABLE `users` (
   `username` text,
   `password` text,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=latin1;
 
 -- ----------------------------
--- Records of users
+--  Records of `users`
 -- ----------------------------
-INSERT INTO `users` VALUES ('1', 'Pepijn', 'R', '9', 'pepijn', 'qwerty1');
-INSERT INTO `users` VALUES ('2', 'Guest', 'G', '0', 'guest', 'guest');
+BEGIN;
+INSERT INTO `users` VALUES ('1', 'Pepijn', 'R', '9', 'pepijn', 'qwerty1'), ('2', 'Guest', 'G', '9', 'guest', 'guest'), ('6', 'Jake', 'Miles', '3', 'JakeMiles', 'TEST'), ('7', 'Jake', 'M', '3', 'asd', 'asd');
+COMMIT;
+
+SET FOREIGN_KEY_CHECKS = 1;

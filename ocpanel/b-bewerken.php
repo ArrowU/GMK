@@ -31,7 +31,8 @@ if($_SESSION['rank'] < 8){
 
 <?php
 require($_SERVER['DOCUMENT_ROOT'].'/inc/sql.php');
-if(isset($_GET['cid']) || is_numeric($_GET['cid'])){
+if(isset($_GET['cid'])){
+    if(is_numeric($_GET['cid'])){
     $id = $_GET['cid'];
     $query = $pdo->prepare("SELECT * FROM users WHERE id=:id");
     $query->execute(array('id' => $id));
@@ -97,7 +98,7 @@ echo'</option>
         //echo'<input type="submit" value="Annuleren" class="btn btn-danger">';
 
     }
-
+    }
 
 }
 if(isset($_GET['savecentralist'])){
@@ -112,6 +113,10 @@ if(isset($_GET['savecentralist'])){
     $query->execute(array('username' => $username, 'password' => $password, 'name' => $name, 'surname' => $surname, 'rang' => $rang, 'uid' => $id));
     header("Location: /ocpanel/b-centralisten.php");
 }
+
+
+
+
 
 
 ?>
