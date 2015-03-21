@@ -23,6 +23,7 @@ if(!isset($_SESSION['username'])){
 <div class="container-fluid">
 <div class="row">
   <div class="col-sm-3 col-md-3"><h5>Eenheid aanmelden<br></h5>
+ <div class="thumbnail">
       <form action="/inc/scripts/survhandeling.php?ACTIVATEUNIT" method="post">
    <select required name="addid" class="form-control">
 <?php
@@ -62,25 +63,26 @@ require($_SERVER['DOCUMENT_ROOT'].'/inc/sql.php');
     <input type="number" required name="grip">
            <center><input type="submit" value="Meld In" class="btn btn-default"></center>
 </form>
-
-
-
-
-
-
 </div>
+  </div>
+    </div>
 
 
 
 
-    <div class="col-sm-3 col-md-3">
+
+
+
+
+    <div class="col-sm-4 col-md-3">
+        <div class="thumbnail">
           <h4>Voeg een melding toe:</h4>   
       <form action="/inc/scripts/survhandeling.php?addcall" method="post">
           <textarea required placeholder="Titel, een korte beschrijving van de melding." type="text" name="titel" cols="30"></textarea>
           <textarea required placeholder="Vul hier de volledige melding in." type="text" name="melding" rows="5" cols="30"></textarea>
           <center><input type="submit" value="Voeg Toe" class="btn btn-default"></center>
       </form>
-
+    </div>
 </div>
 
 

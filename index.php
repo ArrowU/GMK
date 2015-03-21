@@ -119,7 +119,7 @@ if(isset($_GET['logout'])){
         <footer>
             <div class="row">
                 <div class="col-lg-12">
-                    <p>Copyright &copy; <strong>Pepijn R / Benelux112</strong></p>
+                    <p>Auteursrechtelijk beschermd door de Nederlandse wet. &copy; <strong>Benelux112</strong></p>
                 </div>
             </div>
         </footer>
