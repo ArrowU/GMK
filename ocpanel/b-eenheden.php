@@ -48,13 +48,13 @@ if($_SESSION['rank'] < 4){
                         }
 
                         ?>
-                    </select>
-                    <input type="number" required name="volgnummer" placeholder="Volgnummer">
-                    <input type="text" required name="naam" placeholder="Voornaam">
-                    <input type="text" required name="achternaam" placeholder="Achternaam">
+                    </select><br>
+                    <input type="number" required name="volgnummer" placeholder="Volgnummer"><br>
+                    <input type="text" required name="naam" placeholder="Voornaam"><br>
+                    <input type="text" required name="achternaam" placeholder="Achternaam"><br>
                     Eenheid: <select name="eenheid">
                         <?php
-                        $query = $pdo->prepare("SELECT * FROM units ORDER BY id");
+                        $query = $pdo->prepare("SELECT * FROM units ORDER BY eenheid");
                         $query->execute();
                         while($result = $query->fetch(PDO::FETCH_OBJ)){
 
@@ -64,7 +64,7 @@ if($_SESSION['rank'] < 4){
                         }
 
                         ?>
-                    </select>
+                    </select><br>
                    <input type="submit" value="toevoegen" class="btn btn-success">
                 </form>
 

@@ -123,7 +123,7 @@ if(isset($_GET['eid'])){
         $id = $_GET['eid'];
         $query2 = $pdo->prepare("SELECT * FROM roepnummers ORDER BY roepnummer");
         $query2->execute();
-        $query3 = $pdo->prepare("SELECT * FROM units ORDER BY id");
+        $query3 = $pdo->prepare("SELECT * FROM units ORDER BY eenheid");
         $query3->execute();
         $query = $pdo->prepare("SELECT * FROM eenheden WHERE id=:id");
         $query->execute(array('id' => $id));
