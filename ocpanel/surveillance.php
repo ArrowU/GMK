@@ -65,7 +65,7 @@ require($_SERVER['DOCUMENT_ROOT'].'/inc/sql.php');
 </form>
 </div>
   </div>
-    </div>
+
 
 
 
@@ -83,7 +83,7 @@ require($_SERVER['DOCUMENT_ROOT'].'/inc/sql.php');
           <center><input type="submit" value="Voeg Toe" class="btn btn-default"></center>
       </form>
     </div>
-</div>
+
 
 
     <div class="col-sm-12 col-md-12">
@@ -98,12 +98,12 @@ require($_SERVER['DOCUMENT_ROOT'].'/inc/sql.php');
         
        <div id="meldingen"></div>
       </div>
-</div>
+
+</div>    </div>
 
 
-</div>
 
-</div>
+
 
 
 <script src="http://code.jquery.com/jquery-latest.js"></script>
