@@ -72,7 +72,7 @@ if($_SESSION['rank'] < 4){
             </center>
         </div>
     </div>
-    <div class="col-xs-6 col-md-4">
+    <div class="col-xs-6 col-md-3">
         <div class="thumbnail">
             <h4>Zoek Eenheden</h4>
             <form action="?zoekeenheid" method="post">
@@ -111,7 +111,8 @@ if($_SESSION['rank'] < 4){
 
         </div>
     </div>
-    <div class="col-xs-6 col-md-4">
+
+    <div class="col-xs-4 col-md-3">
         <div class="thumbnail">
         <h5>Voeg eenheid toe:</h5>
         <form action="?addunit" method="post">
@@ -127,7 +128,6 @@ if($_SESSION['rank'] < 4){
                 <th>Verwijderen:</th>
             </tr>
             </thead>
-            <div id="REFRESHDIV">
             <tbody>
         <?php
         $query = $pdo->prepare("SELECT * FROM units ORDER BY eenheid");
@@ -152,9 +152,57 @@ if($_SESSION['rank'] < 4){
             $query2->execute(array('unitname' => $unitname));
             header("Location: /ocpanel/b-eenheden.php");
         }
+        if(isset($_GET['newroepnummer'])) {
+            $query11 = $pdo->prepare("INSERT INTO roepnummers (roepnummer) VALUES (:roepnummer)");
+            $query11->execute(array('roepnummer' => $_POST['roepnummer']));
+            header("Location: /ocpanel/b-eenheden.php");
+        }
+        if(isset($_GET['deleteroepnummer'])){
+            if(is_numeric($_GET['deleteroepnummer'])){
+            $query12 = $pdo->prepare("DELETE FROM roepnummers WHERE id=:id");
+            $query12->execute(array('id' => $_GET['deleteroepnummer']));
+        }
+        }
         ?>
-            <tbody>
+            </tbody>
+            </table>
             </div>
         </div>
+
+<div class="col-xs-3 col-md-4">
+    <div class="thumbnail">
+        <h5>Roepnummers:</h5>
+            <form action="?newroepnummer" method="post">
+                <input type="number" required name="roepnummer" placeholder="Roepnummer">
+                <input type="submit" value="toevoegen" class="btn btn-success">
+            </form>
+        <table>
+            <caption>Roepnummers:</caption>
+            <thead>
+            <tr>
+                <th>Nummer: </th>
+                <th>Bewerker:</th>
+            </tr>
+            </thead>
+            <tbody>
+            <?php
+            $query10 = $pdo->prepare("SELECT * FROM roepnummers ORDER BY roepnummer");
+            $query10->execute();
+            while($result10 = $query10->fetch(PDO::FETCH_OBJ)){
+                echo'<tr>';
+                echo'<td>'.$result10->roepnummer.'</td>';
+                echo'<td><a href="?deleteroepnummer='.$result10->id.'" class="btn btn-danger">X</a></td>';
+                echo'</tr>';
+            }
+
+            ?>
+            </tbody>
+            </table></div></div>
     </div>
+
+        <?php
+
+        ?>
+        </div>
+</div>
 </div>
