@@ -83,7 +83,7 @@ require($_SERVER['DOCUMENT_ROOT'].'/inc/sql.php');
           <center><input type="submit" value="Voeg Toe" class="btn btn-default"></center>
       </form>
     </div>
-
+</div>
 
 
     <div class="col-sm-12 col-md-12">
