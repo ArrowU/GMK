@@ -171,6 +171,7 @@ if($_SESSION['rank'] < 4){
 
 <div class="col-xs-3 col-md-4">
     <div class="thumbnail">
+        <center>
         <h5>Roepnummers:</h5>
             <form action="?newroepnummer" method="post">
                 <input type="number" required name="roepnummer" placeholder="Roepnummer">
@@ -197,7 +198,7 @@ if($_SESSION['rank'] < 4){
 
             ?>
             </tbody>
-            </table></div></div>
+            </table></center></div></div>
     </div>
 
         <?php
