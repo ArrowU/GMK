@@ -33,7 +33,7 @@ if(isset($_GET['ACTIVEUNITS'])){
     $query = $pdo->prepare("SELECT * FROM actieve_eenheden ORDER BY roepnummer, volgnummer");
     $query->execute();
     while($result = $query->fetch(PDO::FETCH_OBJ)){
-        echo'<div class="col-xs-4 col-md-8">';
+        echo'<div class="col-sm-3 col-md-2">';
         echo'<div class="thumbnail">';
         echo'Nummer: <strong>';
         echo $result->roepnummer;
@@ -110,6 +110,7 @@ if(isset($_GET['meldingen'])){
     $query = $pdo->prepare("SELECT * FROM meldingen ORDER BY id");
     $query->execute();
         while($result = $query->fetch(PDO::FETCH_OBJ)){
+            echo'<div class="col-sm-5 col-md-4">';
             echo'<div class="thumbnail">';
             echo'<h5>Titel:</h5>';
             echo htmlentities($result->titel);
@@ -121,6 +122,7 @@ if(isset($_GET['meldingen'])){
             echo $result->id;
             echo'" name="mid">';
             echo'</form>';
+            echo'</div>';
             echo'</div>';
         }
 }

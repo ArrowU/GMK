@@ -22,8 +22,7 @@ if(!isset($_SESSION['username'])){
 
 <div class="container-fluid">
 <div class="row">
-    <div class="col-xs-12 col-md-8">
-  <div class="col-xs-6 col-md-4"><h5>Eenheid aanmelden<br></h5>
+  <div class="col-sm-3 col-md-3"><h5>Eenheid aanmelden<br></h5>
       <form action="/inc/scripts/survhandeling.php?ACTIVATEUNIT" method="post">
    <select required name="addid" class="form-control">
 <?php
@@ -63,18 +62,18 @@ require($_SERVER['DOCUMENT_ROOT'].'/inc/sql.php');
     <input type="number" required name="grip">
            <center><input type="submit" value="Meld In" class="btn btn-default"></center>
 </form>
-    
-
-    
-    
-    
 
 
 
 
 
 
-    <div class="col-xs-6 col-md-4">
+</div>
+
+
+
+
+    <div class="col-sm-3 col-md-3">
           <h4>Voeg een melding toe:</h4>   
       <form action="/inc/scripts/survhandeling.php?addcall" method="post">
           <textarea required placeholder="Titel, een korte beschrijving van de melding." type="text" name="titel" cols="30"></textarea>
@@ -82,23 +81,17 @@ require($_SERVER['DOCUMENT_ROOT'].'/inc/sql.php');
           <center><input type="submit" value="Voeg Toe" class="btn btn-default"></center>
       </form>
 
-
 </div>
 
-    </div>
-        </div></div></div>
-<div class="container-fluid">
-<div class="row">
 
-        <div class="col-xs-12 col-md-4">
-            <div class="col-xs-10 col-md-4">
+    <div class="col-sm-12 col-md-12">
 
     <h4>Ingemelde Eenheden:</h4>
     <div id="activeunits"></div></div>
 
 </div>
-</div>
-        <div class="col-xs-2 col-md-4">
+
+<div class="col-sm-12 col-md-12">
   <h4>Meldingen:</h4>
         
        <div id="meldingen"></div>
