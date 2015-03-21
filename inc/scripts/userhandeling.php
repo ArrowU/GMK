@@ -19,8 +19,10 @@ if(isset($_GET['login'])){
             $_SESSION['password'] = htmlentities($array->password);
             $_SESSION['name'] = htmlentities($array->name);
             $_SESSION['surname'] = htmlentities($array->surname);
-            $_SESSION['rank'] = htmlentities($array->rank);   
+            $_SESSION['rank'] = htmlentities($array->rank);
             header("Location: /ocpanel/index.php");
         }
     }
 }
+
+

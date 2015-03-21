@@ -71,4 +71,43 @@ if($_SESSION['rank'] < 4){
             </center>
         </div>
     </div>
+    <div class="col-xs-6 col-md-4">
+        <div class="thumbnail">
+            <h4>Zoek centralisten</h4>
+            <form action="?zoekeenheid" method="post">
+                <input type="text" placeholder="Zoekterm(Naam)" name="naam">
+
+            </form></div>
+
+        <table class="table table-condensed">
+            <tr>
+                <td><strong>Roepnummer:</strong></td>
+                <td><strong>Naam:</strong></td>
+            </tr>
+        </table>
+        <?php if(isset($_GET['zoekeenheid'])){
+            $term = "%".$_POST['naam']."%";
+            $query = $pdo->prepare("SELECT * FROM eenheden WHERE naam LIKE ? ORDER BY id");
+            $query->execute(array($term));
+            while($result = $query->fetch(PDO::FETCH_OBJ)){
+                echo'<table class="table table-condensed">';
+                echo'<tr>';
+                echo'<td>';
+                echo $result->roepnummer;
+                echo'-';
+                echo $result->volgnummer;
+                echo'</td><td>';
+                echo $result->naam;
+                echo'</td><td>';
+                echo'<a href="/ocpanel/b-bewerken.php?eid='.$result->id.'"><button class="btn btn-small btn-success">Bewerk</button> </a>';
+                echo'</td><td>';
+                echo'</tr>';
+                echo'</table>';
+
+            }
+        }
+        ?>
+
+
+    </div>
 </div>
