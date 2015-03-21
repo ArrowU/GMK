@@ -112,9 +112,9 @@ if(isset($_GET['meldingen'])){
         while($result = $query->fetch(PDO::FETCH_OBJ)){
             echo'<div class="thumbnail">';
             echo'<h5>Titel:</h5>';
-            echo $result->titel;
+            echo htmlentities($result->titel);
             echo'<h5>Melding:</h5>';
-            echo $result->melding;
+            echo htmlentities($result->melding);
             echo'<form action="/inc/scripts/survhandeling.php?code4" method="post">';
             echo'<br><center><input type="submit" value="CODE4/AFGEROND" class="btn btn-success"></center>';
             echo'<input type="hidden" value="';

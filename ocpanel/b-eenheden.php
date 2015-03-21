@@ -73,7 +73,7 @@ if($_SESSION['rank'] < 4){
     </div>
     <div class="col-xs-6 col-md-4">
         <div class="thumbnail">
-            <h4>Zoek centralisten</h4>
+            <h4>Zoek Eenheden</h4>
             <form action="?zoekeenheid" method="post">
                 <input type="text" placeholder="Zoekterm(Naam)" name="naam">
 
