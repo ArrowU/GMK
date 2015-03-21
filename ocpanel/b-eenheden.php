@@ -29,12 +29,13 @@ if($_SESSION['rank'] < 4){
 </ul>
 
 
+
 <div class="row">
     <div class="col-xs-3 col-md-4">
         <div class="thumbnail">
             <center>
                 <h5>Eenheid toevoegen:</h5>
-                <form action="/inc/scripts/beheerhandeling.php?addunit" method="post">
+                <form id="AddUnit" action="/inc/scripts/beheerhandeling.php?addunit" method="post">
                     Roepnummer: <select name="roepnummer">
                         <?php
                         require($_SERVER['DOCUMENT_ROOT'].'/inc/sql.php');
@@ -77,7 +78,7 @@ if($_SESSION['rank'] < 4){
             <form action="?zoekeenheid" method="post">
                 <input type="text" placeholder="Zoekterm(Naam)" name="naam">
 
-            </form></div>
+            </form>
 
         <table class="table table-condensed">
             <tr>
@@ -108,6 +109,52 @@ if($_SESSION['rank'] < 4){
         }
         ?>
 
+        </div>
+    </div>
+    <div class="col-xs-6 col-md-4">
+        <div class="thumbnail">
+        <h5>Voeg eenheid toe:</h5>
+        <form action="?addunit" method="post">
+            <input name="unitname" required type="text" placeholder="Eenheid naam">
 
+            <input type="submit" value="toevoegen" class="btn btn-success">
+        </form>
+        <table>
+            <caption>Eenheden:</caption>
+            <thead>
+            <tr>
+                <th>Naam: </th>
+                <th>Verwijderen:</th>
+            </tr>
+            </thead>
+            <div id="REFRESHDIV">
+            <tbody>
+        <?php
+        $query = $pdo->prepare("SELECT * FROM units ORDER BY eenheid");
+        $query->execute();
+        while($result = $query->fetch(PDO::FETCH_OBJ)){
+            echo'<tr>';
+            echo'<td>'.$result->eenheid.'</td>';
+            echo'<td><a href="?deleteunitid='.$result->id.'" class="btn btn-danger">X</a></td>';
+            echo'</tr>';
+        }
+        if(isset($_GET['deleteunitid'])){
+            if(is_numeric($_GET['deleteunitid'])){
+                $uid = $_GET['deleteunitid'];
+                $query2 = $pdo->prepare("DELETE FROM units WHERE id=:id");
+                $query2->execute(array('id' => $uid));
+                header("Location: /ocpanel/b-eenheden.php");
+            }
+        }
+        if(isset($_GET['addunit'])){
+            $unitname = $_POST['unitname'];
+            $query2 = $pdo->prepare("INSERT INTO units (eenheid) VALUES (:unitname)");
+            $query2->execute(array('unitname' => $unitname));
+            header("Location: /ocpanel/b-eenheden.php");
+        }
+        ?>
+            <tbody>
+            </div>
+        </div>
     </div>
 </div>

@@ -30,11 +30,12 @@ if(isset($_GET['ACTIVEUNITS'])){
     
 
 
-    $query = $pdo->prepare("SELECT * FROM actieve_eenheden ORDER BY roepnummer");
+    $query = $pdo->prepare("SELECT * FROM actieve_eenheden ORDER BY roepnummer, volgnummer");
     $query->execute();
     while($result = $query->fetch(PDO::FETCH_OBJ)){
+        echo'<div class="col-xs-4 col-md-8">';
         echo'<div class="thumbnail">';
-        echo'<h6>Nummer: <strong>';
+        echo'Nummer: <strong>';
         echo $result->roepnummer;
         echo'-';
         echo $result->volgnummer;
@@ -77,7 +78,6 @@ if(isset($_GET['ACTIVEUNITS'])){
         echo'<input type="submit" value="CODE9" class="btn btn-sm btn-warning">';
         echo'<input type="submit" value="CODE10" class="btn btn-sm btn-danger">';
         echo'</form>';
-        
         echo'<h6>Gekoppeld aan melding:<small><br>';
         if(!$result->melding_id){
             echo 'Niet gekoppeld';
@@ -91,9 +91,9 @@ if(isset($_GET['ACTIVEUNITS'])){
             }
              echo'</small></h6>';   
              echo'</small></h6>';   
-    echo'</div>';
-    echo'</div>';
-
+        echo'</div>';
+        echo'</div>';
+        echo'</div>';
         
         }
     
